@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# Displays all active IPv4 addresses on the machine, each on a new line
+# Displays all active IPv4 addresses including localhost using ip addr
 
-hostname -I | tr ' ' '\n' | grep -v '^$'
+ip -4 addr show | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
